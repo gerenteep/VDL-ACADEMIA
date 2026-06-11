@@ -1055,7 +1055,7 @@ function login(){
   const hb=document.getElementById('hbdg');
   if(u.rol==='admin'){hb.textContent='🔐 Administrador';hb.className='hbdg-a';document.getElementById('nav-admin').classList.remove('hidden');document.getElementById('btn-vista-trabajador').style.display='inline-flex';}
   else if(u.rol==='gerencia'){hb.textContent='👔 '+u.cargo;hb.className='hbdg-a';document.getElementById('nav-admin').classList.remove('hidden');}
-  else{hb.textContent=u.area;hb.className='hbdg-u';}
+  else{hb.textContent=u.area;hb.className='hbdg-u';document.getElementById('nav-admin').classList.add('hidden');document.getElementById('btn-vista-trabajador').style.display='none';}
   document.getElementById('wname').textContent=u.name.split(' ')[0];
   buildSB();buildGrid();sv('inicio');
 }
@@ -2009,7 +2009,7 @@ function saveData(){
 function loadData(){
   try{
     // ── Auto-clear si hay versión nueva ──
-    const CODE_VERSION = 'v25.8';
+    const CODE_VERSION = 'v25.9';
     const savedVersion = localStorage.getItem('vdl_version');
     if(savedVersion !== CODE_VERSION){
       localStorage.removeItem('vdl_platform_data');
