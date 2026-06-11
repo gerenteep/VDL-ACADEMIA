@@ -617,7 +617,7 @@ const MODS={
       ]},
       {name:'Gestión Humana (GH)',topics:[
         {name:'Procesos de selección y contratación',url:'https://gerenteep.github.io/VDL-ACADEMIA/RECLUTAMIENTO%20Y%20SELECCION.pdf',mediaType:'pdf',desc:'Cómo funciona el proceso de incorporación del talento en VDL.'},
-        {name:'Evaluación de desempeño',url:'',desc:'Metodología y periodicidad del proceso de evaluación en la empresa.'},
+        {name:'Evaluación de desempeño',url:'https://gerenteep.github.io/VDL-ACADEMIA/proceso%20de%20Contratacion.pdf',mediaType:'pdf',desc:'Metodología y periodicidad del proceso de evaluación en la empresa.'},
         {name:'Plan de formación y rutas de aprendizaje',url:'',desc:'Cómo acceder a los programas de capacitación disponibles para tu cargo.'},
         {name:'Bienestar y beneficios del colaborador',url:'',desc:'Beneficios, actividades y programas de bienestar disponibles en VDL.'},
         {name:'Política de no discriminación e inclusión',url:'https://gerenteep.github.io/VDL-ACADEMIA/Proteccion_Datos.pdf',mediaType:'pdf',mediaType:'inline',desc:'Compromiso de VDL con la diversidad, equidad e inclusión en el equipo.'},
@@ -2027,7 +2027,7 @@ function saveData(){
 function loadData(){
   try{
     // ── Auto-clear si hay versión nueva ──
-    const CODE_VERSION = 'v25.0';
+    const CODE_VERSION = 'v25.1';
     const savedVersion = localStorage.getItem('vdl_version');
     if(savedVersion !== CODE_VERSION){
       localStorage.removeItem('vdl_platform_data');
