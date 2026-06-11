@@ -598,7 +598,7 @@ const MODS={
     desc:'Programa de inducción obligatorio para todos los colaboradores nuevos y actuales de Visión del Litoral SAS.',
     sgs:[
       {name:'🏛️ Historia de VDL',topics:[
-        {name:'Historia de VDL',url:'https://drive.google.com/file/d/1_ZE0ehTi2sXsCyJufIDYW5yXdIfnigtJ/preview',mediaType:'pres',desc:'Conoce el camino recorrido desde la fundación de Visión del Litoral SAS hasta hoy.'},
+        {name:'Historia de VDL',url:'https://drive.google.com/file/d/1peWyTM8TH5tLOm7Z5QC7MyywPAxSR-fa/preview',mediaType:'pres',desc:'Conoce el camino recorrido desde la fundación de Visión del Litoral SAS hasta hoy.'},
       ]},
       {name:'🎯 Misión, Visión y Valores',topics:[
         {name:'Misión, Visión y Valores',url:'https://drive.google.com/file/d/1-6k2SDxL4CjK_d8-5CJIhNIc3e2thDk7/preview',mediaType:'pres',desc:'El propósito, la dirección y los principios que guían a Visión del Litoral SAS.'},
@@ -1222,17 +1222,18 @@ function openContent(mid,sgI,tIdx){
   } else if(tp.url && tp.url !== '__idb__' && tp.url !== '__local__'){
     // Check if it's a blandas external course link
     if(mid === 'blandas' && tp.url.startsWith('http') && !tp.url.includes('youtube.com') && !tp.url.includes('youtu.be')){
-      // Show rich course card instead of iframe
-      const sgN = sg.name.replace(/[🎓🏫💡🧠🌐]/g,'').trim();
-      vpEl.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:20px;background:linear-gradient(135deg,#FFF8F0,#FFF3E0);border-radius:12px;padding:36px 24px;text-align:center">
-        <div style="font-size:56px">🌟</div>
-        <div style="font-weight:900;font-size:17px;color:#E65100;font-family:Nunito,sans-serif">${tp.name}</div>
-        <div style="font-size:12px;color:#666;max-width:340px;line-height:1.7">${tp.desc}</div>
-        <div style="background:#FFF3E0;border:1.5px solid #E65100;border-radius:10px;padding:10px 18px;font-size:11px;color:#E65100;font-weight:800">📚 ${sgN}</div>
-        <a href="${tp.url}" target="_blank" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#E65100,#F57C00);color:#fff;border-radius:14px;font-size:14px;font-weight:900;text-decoration:none;font-family:Nunito Sans,sans-serif;box-shadow:0 6px 24px rgba(230,81,0,.3);letter-spacing:.3px">
-          🌐 Ir al curso gratuito →
+      // External course - show button to open in new tab
+      const platformIcon = tp.url.includes('coursera') ? '🎓' : tp.url.includes('alison') ? '✅' : tp.url.includes('google') ? '🌐' : tp.url.includes('harvard') ? '🏛️' : tp.url.includes('andes') ? '🏔️' : '🌟';
+      const platformName = tp.url.includes('coursera') ? 'Coursera' : tp.url.includes('alison') ? 'Alison' : tp.url.includes('google') ? 'Google Activate' : tp.url.includes('youtube') ? 'YouTube' : 'Plataforma Educativa';
+      vpEl.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:24px;background:linear-gradient(135deg,#FFF8F0,#FFF3E0);border-radius:12px;padding:40px 24px;text-align:center">
+        <div style="font-size:64px">${platformIcon}</div>
+        <div style="font-weight:900;font-size:20px;color:#1B2A6B">${tp.name}</div>
+        <div style="font-size:13px;color:#666;max-width:400px">${tp.desc}</div>
+        <div style="background:#E65100;color:#fff;padding:6px 16px;border-radius:100px;font-size:12px;font-weight:700">${platformName} — Gratuito</div>
+        <a href="${tp.url}" target="_blank" rel="noopener" style="background:#1B2A6B;color:#fff;padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;display:inline-block;margin-top:8px">
+          🚀 Ir al curso ahora →
         </a>
-        <div style="font-size:10px;color:#999;margin-top:-8px">Se abrirá en una nueva pestaña</div>
+        <div style="font-size:11px;color:#999">Se abrirá en una nueva pestaña del navegador</div>
       </div>`;
       document.getElementById('durl').value = '';
     } else {
@@ -2008,7 +2009,7 @@ function saveData(){
 function loadData(){
   try{
     // ── Auto-clear si hay versión nueva ──
-    const CODE_VERSION = 'v25.6';
+    const CODE_VERSION = 'v25.8';
     const savedVersion = localStorage.getItem('vdl_version');
     if(savedVersion !== CODE_VERSION){
       localStorage.removeItem('vdl_platform_data');
